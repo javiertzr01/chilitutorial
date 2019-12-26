@@ -25,6 +25,18 @@ void Goal::Draw( Board& brd ) const
 	brd.DrawCell( loc, c );
 }
 
+bool Goal::IsInTile( const Location& target ) const
+{
+	if (loc == target)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
 const Location& Goal::GetLocation() const
 {
 	return loc;

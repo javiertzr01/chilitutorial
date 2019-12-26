@@ -41,7 +41,7 @@ Snake::Snake( const Location& loc )
 
 void Snake::Draw( Board& brd ) const
 {
-	for (int i = 0; i < nSegmentsMax; i++)
+	for (int i = 0; i < nSegments; i++)
 	{
 		segments[i].Draw( brd );
 	}

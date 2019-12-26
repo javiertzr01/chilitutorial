@@ -29,7 +29,8 @@ Game::Game( MainWindow& wnd )
     brd( gfx ),
     rng(std::random_device()()),
     snek( {5,5} ),
-    goal( rng, brd, snek )
+    goal( rng, brd, snek ),
+    obstacle (rng, snek, brd, goal)
 {
 }
 
@@ -87,6 +88,7 @@ void Game::UpdateModel()
                         snek.Grow();
                         snek.MoveBy( delta_loc );
                         goal.Respawn( rng, brd, snek );
+                        obstacle.SpawnObstacle( rng, snek, brd, goal );
                     }
                     else
                     {
@@ -123,6 +125,7 @@ void Game::ComposeFrame()
 {
     snek.Draw( brd );
     goal.Draw( brd );
+    obstacle.Draw( brd );
     brd.Draw();
     if (GameOver)
     {

@@ -10,6 +10,7 @@ public:
 	Goal( std::mt19937& rng, const Board& brd, const Snake& snake );
 	void Respawn( std::mt19937& rng, const Board& brd, const Snake& snake );
 	void Draw( Board& brd ) const;
+	bool IsInTile( const Location& target ) const;
 	const Location& GetLocation() const;
 private:
 	static constexpr Color c = Colors::Red;
