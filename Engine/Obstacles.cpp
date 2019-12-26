@@ -21,6 +21,11 @@ void Obstacles::IndividualObstacle::ResetSpawnLocation( std::mt19937 rnd, const 
 	loc = NewLoc;
 }
 
+Location Obstacles::IndividualObstacle::getLocation()
+{
+	return loc;
+}
+
 Obstacles::Obstacles( std::mt19937 rnd, const Snake& snake, const Board& brd, const Goal& goal )
 {
 	obstacles[0].ResetSpawnLocation(rnd, snake, brd, goal);
@@ -43,4 +48,19 @@ void Obstacles::SpawnObstacle( std::mt19937 rnd, const Snake& snake, const Board
 {
 	obstacles[nObstacles].ResetSpawnLocation( rnd, snake, brd, goal );
 	ObstacleIncrement();
+}
+
+bool Obstacles::ObstacleCollision( const Location& nextLoc ) 
+{
+	for (int i = 0; i < nObstacles; i++)
+	{
+		if (obstacles[i].getLocation() == nextLoc)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 }

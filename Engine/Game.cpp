@@ -81,6 +81,10 @@ void Game::UpdateModel()
                     {
                         GameOver = true;
                     }
+                    if (obstacle.ObstacleCollision( next ))
+                    {
+                        GameOver = true;
+                    }
                     const bool eating = next == goal.GetLocation();
                     if (eating)
                     {

@@ -12,6 +12,7 @@ public:
 	public:
 		void Draw( Board& brd ) const;
 		void ResetSpawnLocation( std::mt19937 rnd, const Snake& snake, const Board& brd, const Goal& goal );
+		Location getLocation();
 	private:
 		Location loc;
 		Color c = Colors::LightGray;
@@ -21,6 +22,7 @@ public:
 	void Draw( Board& brd ) const ;
 	void ObstacleIncrement();
 	void SpawnObstacle( std::mt19937 rnd, const Snake& snake, const Board& brd, const Goal& goal );
+	bool ObstacleCollision( const Location& nextLoc );
 private:
 	static constexpr int nObstaclesMax = 100;
 	int nObstacles = 1;
